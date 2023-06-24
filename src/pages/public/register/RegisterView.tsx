@@ -96,6 +96,7 @@ const RegisterView: FC = () => {
         }}
       >
         <TextField
+          data-cy="register-email"
           {...register("email")}
           fullWidth
           label="Email"
@@ -103,6 +104,7 @@ const RegisterView: FC = () => {
           helperText={Boolean(errors.email) && errors.email?.message}
         />
         <TextField
+          data-cy="register-first-name"
           {...register("firstName")}
           fullWidth
           label="First Name"
@@ -110,6 +112,7 @@ const RegisterView: FC = () => {
           helperText={Boolean(errors.firstName) && errors.firstName?.message}
         />
         <TextField
+          data-cy="register-last-name"
           {...register("lastName")}
           fullWidth
           label="Last Name"
@@ -117,6 +120,7 @@ const RegisterView: FC = () => {
           helperText={Boolean(errors.lastName) && errors.lastName?.message}
         />
         <TextField
+          data-cy="register-password"
           {...register("password")}
           fullWidth
           label="Password"
@@ -137,6 +141,7 @@ const RegisterView: FC = () => {
           }}
         />
         <TextField
+          data-cy="register-c_password"
           {...register("c_password")}
           label="Confirm Password"
           type={showPass.c_pass ? "text" : "password"}
@@ -165,7 +170,11 @@ const RegisterView: FC = () => {
             Sign in
           </Typography>
         </Box>
-        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
+        <Button
+          data-cy="register-submit"
+          variant="contained"
+          onClick={handleSubmit(onSubmit)}
+        >
           submit
         </Button>
       </Box>
