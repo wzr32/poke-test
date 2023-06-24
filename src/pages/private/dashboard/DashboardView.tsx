@@ -59,7 +59,14 @@ const DashboardView = () => {
             {results
               .sort((a, b) => a.id - b.id)
               .map((item) => (
-                <Grid item xs={12} sm={6} md={4} key={item.id}>
+                <Grid
+                  data-cy="item-data"
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={item.id}
+                >
                   <StyledCardWithMui
                     img={item.sprites.other["official-artwork"].front_default}
                     weight={item.weight}

@@ -67,6 +67,7 @@ const LoginView = () => {
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
         <TextField
+          data-cy="login-email"
           {...register("email")}
           fullWidth
           label="email"
@@ -74,6 +75,7 @@ const LoginView = () => {
           helperText={Boolean(errors.email) && errors.email?.message}
         />
         <TextField
+          data-cy="login-password"
           {...register("password")}
           label="password"
           type={showPass ? "text" : "password"}
@@ -100,7 +102,11 @@ const LoginView = () => {
             Sign up
           </Typography>
         </Box>
-        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
+        <Button
+          data-cy="login-submit"
+          variant="contained"
+          onClick={handleSubmit(onSubmit)}
+        >
           submit
         </Button>
       </Box>
