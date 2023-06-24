@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import {
   Box,
   Card,
@@ -7,17 +7,19 @@ import {
   CardMedia,
   CardProps,
   Chip,
+  Typography,
   styled,
 } from "@mui/material";
 
 interface IStyledCardProps {
   img: string;
   weight: number;
+  name: string;
+  moves: string[];
   onClick: () => void;
-  children: ReactNode;
 }
 
-const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
+const StyledCard = styled(Card)<CardProps>(() => ({
   borderRadius: "15px",
   border: "1px solid #e6e6e6",
   WebkitBoxShadow: "0px 10px 7px -3px rgba(0,0,0,0.7)",
@@ -49,19 +51,18 @@ const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
   },
 }));
 
-const StyledCardContent = styled(CardContent)<CardContentProps>(
-  ({ theme }) => ({
-    padding: "30px 25px 15px",
-    borderTopLeftRadius: "0",
-    borderTopRightRadius: "0",
-  })
-);
+const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
+  padding: "30px 25px 15px",
+  borderTopLeftRadius: "0",
+  borderTopRightRadius: "0",
+}));
 
 const TwoFactorInput: FC<IStyledCardProps> = ({
   img,
   weight,
+  name,
+  moves,
   onClick,
-  children,
 }): JSX.Element => {
   return (
     <StyledCard onClick={onClick}>
@@ -82,7 +83,16 @@ const TwoFactorInput: FC<IStyledCardProps> = ({
           <Chip label={`Weight: ${weight}`} color="primary" />
         </Box>
       </Box>
-      <StyledCardContent>{children}</StyledCardContent>
+      <StyledCardContent>
+        <Typography fontWeight="bold" fontSize="18px" gutterBottom>
+          {name.toUpperCase()}
+        </Typography>
+        {moves.map((move) => (
+          <Typography component="span" key={move}>
+            #{move}
+          </Typography>
+        ))}
+      </StyledCardContent>
     </StyledCard>
   );
 };

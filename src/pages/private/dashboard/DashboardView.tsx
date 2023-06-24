@@ -2,7 +2,7 @@ import { Loader } from "@/components/loader";
 import { StyledCardWithMui } from "@/components/styled-card";
 import { usePokemonRequest } from "@/hooks";
 import { PokemonData, PokemonListData } from "@/types";
-import { Box, Grid, Pagination, Typography } from "@mui/material";
+import { Box, Grid, Pagination } from "@mui/material";
 
 import { useState } from "react";
 import { InfoDialog } from "@/components/info-dialog";
@@ -69,19 +69,11 @@ const DashboardView = () => {
                 >
                   <StyledCardWithMui
                     img={item.sprites.other["official-artwork"].front_default}
+                    name={item.name.toUpperCase()}
+                    moves={[item.moves[0].move.name, item.moves[1].move.name]}
                     weight={item.weight}
                     onClick={() => handleOpenDialog(item)}
-                  >
-                    <Typography fontWeight="bold" fontSize="18px" gutterBottom>
-                      {item.name.toUpperCase()}
-                    </Typography>
-                    <Typography component="span">
-                      #{item.moves[0].move.name}
-                    </Typography>{" "}
-                    <Typography component="span">
-                      #{item.moves[1].move.name}
-                    </Typography>
-                  </StyledCardWithMui>
+                  />
                 </Grid>
               ))}
           </Grid>

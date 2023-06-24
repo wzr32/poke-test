@@ -194,7 +194,7 @@ interface Dreamworld {
   front_female?: any;
 }
 
-interface Move {
+export interface Move {
   move: Ability;
   version_group_details: Versiongroupdetail[];
 }
